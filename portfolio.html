@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aprose Portfolio</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f4f8;
+    color:#222;
+}
+
+
+.navbar{
+    width:100%;
+    padding:22px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    background:rgba(75, 48, 127, 0.09);
+    /* backdrop-filter:blur(8px); */
+}
+
+.logo{
+    color:white;
+    font-size:34px;
+    font-weight:bold;
+    letter-spacing:2px;
+    font-family: cursive;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#5f055d;
+}
+
+
+.hero{
+    width:100%;
+    height:100vh;
+    background:
+    linear-gradient(rgba(49, 27, 96, 0.886),rgba(66,35,135,0.8)),
+    url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 10%;
+}
+
+.hero-content{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.hero-image img{
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    border:8px solid white;
+    object-fit:cover;
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+}
+
+.hero-text h1{
+    font-size:75px;
+    color:white;
+    margin-bottom:15px;
+}
+
+.hero-text p{
+    color:#eee;
+    font-size:26px;
+    margin-bottom:25px;
+}
+
+.social-icons{
+    display:flex;
+    gap:20px;
+}
+
+.social-icons i{
+    width:50px;
+    height:50px;
+    background:white;
+    color:#5b35b1;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    transition:0.3s;
+}
+
+.social-icons i:hover{
+    background:#ffd700;
+    color:black;
+    transform:translateY(-5px);
+}
+
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:60px;
+    color:#5b35b1;
+    margin-bottom:50px;
+}
+
+
+.about-container{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.about-text{
+    flex:1;
+}
+
+.about-text h2{
+    font-size:45px;
+    margin-bottom:20px;
+    color:#5b35b1;
+}
+
+.about-text p{
+    font-size:20px;
+    line-height:1.8;
+    color:#0c0000;
+}
+
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+}
+
+.service-box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.4s;
+}
+
+.service-box:hover{
+    transform:translateY(-10px);
+}
+
+.service-box i{
+    font-size:55px;
+    color:#5b35b1;
+    margin-bottom:20px;
+}
+
+.service-box h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.service-box p{
+    color:#010000;
+    line-height:1.7;
+}
+
+
+.portfolio{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.portfolio-box{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.portfolio-box img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.portfolio-box:hover img{
+    transform:scale(1.1);
+}
+
+.work{
+    background:#5b35b1;
+    color:white;
+    border-radius:25px;
+    text-align:center;
+    padding:80px;
+}
+
+.work h2{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.work p{
+    font-size:22px;
+    line-height:1.8;
+}
+
+
+.blog-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.blog-box{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.blog-box img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.blog-content{
+    padding:25px;
+}
+
+.blog-content h3{
+    margin-bottom:15px;
+    color:#5b35b1;
+}
+
+
+.contact{
+    background:white;
+    border-radius:20px;
+    padding:50px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:18px;
+    margin-bottom:20px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+}
+
+.contact-form textarea{
+    height:150px;
+}
+
+.contact-form button{
+    width:100%;
+    padding:18px;
+    border:none;
+    background:#5b35b1;
+    color:white;
+    font-size:20px;
+    border-radius:35px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.contact-form button:hover{
+    background:#45208f;
+}
+
+
+.footer{
+    background:#1d1238;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .hero-text h1{
+        font-size:45px;
+    }
+
+    .hero-content{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .hero-image img{
+        width:220px;
+        height:220px;
+    }
+
+    .section-title{
+        font-size:40px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header class="navbar">
+
+<div class="logo"><i class="fa-jelly-fill fa-regular fa-flower" style="color: rgb(198, 17, 58);"></i>ROSE</div>
+
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#portfolio">Portfolio</a></li>
+<li><a href="#work">Work</a></li>
+<li><a href="#blog">Blog</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</header>
+
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-image">
+<img src="image.png" alt="">
+</div>
+
+<div class="hero-text">
+
+<h1>Hello I'm Aprose!</h1>
+
+<p>Web Developer & Front-End Developer</p>
+
+<div class="social-icons">
+
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-linkedin-in"></i>
+<i class="fab fa-github"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="about">
+
+<h1 class="section-title">About Me</h1>
+
+<div class="about-container">
+
+<div class="about-text">
+
+<h2>Who Am I?</h2>
+
+<p>
+I'm Aprose, a passionate Web Developer and Front-End Developer
+who creates modern, responsive, and attractive websites using
+HTML, CSS, and JavaScript.
+</p>
+
+<br>
+
+<p>
+I love building clean user interfaces and professional web designs
+that improve user experience and make websites visually attractive.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="services">
+
+<h1 class="section-title">Services</h1>
+
+<div class="services">
+
+<div class="service-box">
+<i class="fas fa-code"></i>
+<h3>Web Development</h3>
+<p>Professional responsive website development.</p>
+</div>
+
+<div class="service-box">
+<i class="fas fa-mobile-alt"></i>
+<h3>Mobile App</h3>
+<p>Fully attractive and responsive mobile application using android.</p>
+</div>
+
+<div class="service-box">
+<i class="fas fa-cloud-rain"></i>
+<h3>IoT</h3>
+ <p>IoT Based Rain Water Detection System for Smart Water Monitoring and Alert Management.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="portfolio">
+
+<h1 class="section-title">Portfolio</h1>
+
+<div class="portfolio">
+
+<div class="portfolio-box">
+<img src="p1 (1).png" alt="">
+</div>
+
+<div class="portfolio-box">
+<img src="p1 (2).png" alt="">
+</div>
+
+<div class="portfolio-box">
+<img src="p1 (3).png" alt="">
+</div>
+
+</div>
+
+</section>
+
+
+<section id="work">
+
+<div class="work">
+
+<h2>My Work</h2>
+
+<p>
+Creating elegant websites with modern UI design,
+responsive layouts, and user-friendly experiences.
+</p>
+
+</div>
+
+</section>
+
+<section id="blog">
+
+<h1 class="section-title">Blog</h1>
+
+<div class="blog-container">
+
+<div class="blog-box">
+
+<img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200" alt="">
+
+<div class="blog-content">
+
+<h3>Modern Web Design</h3>
+
+<p>Learn modern web design techniques and trends.</p>
+
+</div>
+
+</div>
+
+<div class="blog-box">
+
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200" alt="">
+
+<div class="blog-content">
+
+<h3>Responsive Design</h3>
+
+<p>Create mobile friendly responsive websites easily.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="contact">
+
+<h1 class="section-title">Contact Me</h1>
+
+<div class="contact">
+
+<div class="contact-form">
+
+<input type="text" placeholder="Enter Your Name">
+
+<input type="email" placeholder="Enter Your Email">
+
+<textarea placeholder="Your Message"></textarea>
+
+<button>Send Message</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer class="footer">
+
+<h2>APROSE PORTFOLIO</h2>
+
+<p>© 2026 All Rights Reserved</p>
+
+</footer>
+
+</body>
+</html>
